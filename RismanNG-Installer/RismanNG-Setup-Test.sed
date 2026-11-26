@@ -1,0 +1,37 @@
+[Version]
+Class=IEXPRESS
+SEDVersion=3
+[Options]
+PackagePurpose=InstallApp
+ShowInstallProgramWindow=0
+HideExtractAnimation=0
+UseLongFileName=1
+InsideCompressed=0
+CAB_FixedSize=0
+CAB_ResvCodeSigning=0
+RebootMode=N
+InstallPrompt=%InstallPrompt%
+DisplayLicense=%DisplayLicense%
+FinishMessage=%FinishMessage%
+TargetName=%TargetName%
+FriendlyName=%FriendlyName%
+AppLaunched=%AppLaunched%
+PostInstallCmd=%PostInstallCmd%
+AdminQuietInstCmd=
+UserQuietInstCmd=
+SourceFiles=SourceFiles
+[Strings]
+InstallPrompt=
+DisplayLicense=
+FinishMessage=
+TargetName=G:\RismanNG\RismanNG-Installer\RismanNG-Setup-Test-20260928-profiles.exe
+FriendlyName=RismanNG Test Build Setup
+AppLaunched=powershell.exe -NoProfile -ExecutionPolicy Bypass -File Install.ps1
+PostInstallCmd=<None>
+FILE0="payload.zip"
+FILE1="Install.ps1"
+[SourceFiles]
+SourceFiles0=G:\RismanNG\RismanNG-Installer\
+[SourceFiles0]
+%FILE0%=
+%FILE1%=
