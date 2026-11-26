@@ -1,0 +1,20 @@
+{
+  "log": { "loglevel": "warning" },
+  "api": { "tag": "api", "services": [ "StatsService" ] },
+  "stats": {},
+  "policy": { "system": { "statsOutboundUplink": true, "statsOutboundDownlink": true } },
+  "inbounds": [
+    { "tag": "http-in", "listen": "127.0.0.1", "port": 18180, "protocol": "http", "settings": {} },
+    { "tag": "api", "listen": "127.0.0.1", "port": 18181, "protocol": "dokodemo-door", "settings": { "address": "127.0.0.1" } }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "vless",
+      "settings": { "vnext": [ { "address": "example.com", "port": 443, "users": [ { "id": "00000000-0000-4000-8000-000000000000", "encryption": "none" } ] } ] },
+      "streamSettings": { "network": "ws", "security": "tls", "wsSettings": { "path": "/ws", "headers": { "Host": "example.com" } }, "tlsSettings": { "serverName": "example.com", "allowInsecure": false, "fingerprint": "chrome" } }
+    },
+    { "tag": "direct", "protocol": "freedom" }
+  ],
+  "routing": { "rules": [ { "type": "field", "inboundTag": [ "api" ], "outboundTag": "api" } ] }
+}
